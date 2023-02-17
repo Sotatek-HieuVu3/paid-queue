@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  queue:
+    build:
+      context: .
+      args:
+        - APP_ENV
+
+    command: npm run start:dev
+#    ports:
+#      - 3025:3005
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules/
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      APP_PORT: ${APP_PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DEFAULT_ADMIN_USER_PASSWORD: ${DEFAULT_ADMIN_USER_PASSWORD}
+    networks:
+      - ste_net
+
+volumes:
+  node_modules:
+
+networks:
+  ste_net:
+    external: true
+    name: ste-api_base_net
