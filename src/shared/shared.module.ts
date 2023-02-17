@@ -24,21 +24,21 @@ import { QueueModule } from './queue.module';
     DatabaseModule,
     AppLoggerModule,
     QueueModule,
-    BullModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        redis: {
-          host: configService.get('REDIS_HOST'),
-          port: Number(configService.get('REDIS_PORT')),
-          password: configService.get('REDIS_PASSWORD'),
-        },
-        defaultJobOptions: {
-          removeOnComplete: true,
-          removeOnFail: true,
-        },
-      }),
-      inject: [ConfigService],
-    }),
+    // BullModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: async (configService: ConfigService) => ({
+    //     redis: {
+    //       host: configService.get('REDIS_HOST'),
+    //       port: Number(configService.get('REDIS_PORT')),
+    //       password: configService.get('REDIS_PASSWORD'),
+    //     },
+    //     defaultJobOptions: {
+    //       removeOnComplete: true,
+    //       removeOnFail: true,
+    //     },
+    //   }),
+    //   inject: [ConfigService],
+    // }),
   ],
   exports: [AppLoggerModule, ConfigModule, DatabaseModule],
   providers: [

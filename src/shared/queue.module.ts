@@ -11,6 +11,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         redis: {
           host: configService.get<string>('redis.host'),
           port: configService.get<number>('redis.port'),
+          password: configService.get<string>('redis.password'),
         },
         prefix: configService.get<string>('queue.prefix'),
         defaultJobOptions: {
